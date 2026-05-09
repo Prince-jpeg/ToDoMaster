@@ -1,17 +1,14 @@
-package com.todomaster.backend.controller;
+package com.todomaster.backend.features.authentication;
 
 import org.springframework.web.bind.annotation.*;
-import com.todomaster.backend.service.AuthService;
-import com.todomaster.backend.dto.LoginRequest;
-import com.todomaster.backend.dto.RegisterRequest;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class AuthenticationController {
 
-    private final AuthService service;
+    private final AuthenticationService service;
 
-    public AuthController(AuthService service) {
+    public AuthenticationController(AuthenticationService service) {
         this.service = service;
     }
 

@@ -1,6 +1,7 @@
-package com.todomaster.backend.entity;
+package com.todomaster.backend.features.profile;
 
 import jakarta.persistence.*;
+import com.todomaster.backend.features.user.User;
 
 @Entity
 @Table(name = "profiles")

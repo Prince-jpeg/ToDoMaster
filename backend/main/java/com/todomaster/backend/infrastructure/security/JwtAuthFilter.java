@@ -1,4 +1,5 @@
-package com.todomaster.backend.config;
+package com.todomaster.backend.infrastructure.security;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

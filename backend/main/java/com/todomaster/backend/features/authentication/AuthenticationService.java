@@ -1,20 +1,18 @@
-package com.todomaster.backend.service;
+package com.todomaster.backend.features.authentication;
 
 import org.springframework.stereotype.Service;
-import com.todomaster.backend.entity.User;
-import com.todomaster.backend.entity.Profile;
-import com.todomaster.backend.repository.UserRepository;
-import com.todomaster.backend.repository.ProfileRepository;
-import com.todomaster.backend.dto.LoginRequest;
-import com.todomaster.backend.dto.RegisterRequest;
+import com.todomaster.backend.features.user.User;
+import com.todomaster.backend.features.user.UserRepository;
+import com.todomaster.backend.features.profile.Profile;
+import com.todomaster.backend.features.profile.ProfileRepository;
 
 @Service
-public class AuthService {
+public class AuthenticationService {
 
     private final UserRepository userRepo;
     private final ProfileRepository profileRepo;
 
-    public AuthService(UserRepository userRepo, ProfileRepository profileRepo) {
+    public AuthenticationService(UserRepository userRepo, ProfileRepository profileRepo) {
         this.userRepo = userRepo;
         this.profileRepo = profileRepo;
     }

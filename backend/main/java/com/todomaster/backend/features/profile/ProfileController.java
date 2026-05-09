@@ -1,9 +1,6 @@
-package com.todomaster.backend.controller;
+package com.todomaster.backend.features.profile;
 
 import org.springframework.web.bind.annotation.*;
-import com.todomaster.backend.service.ProfileService;
-import com.todomaster.backend.entity.Profile;
-import com.todomaster.backend.dto.UpdateProfileRequest;
 
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:3002"}, allowCredentials = "true")
 @RestController

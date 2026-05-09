@@ -1,4 +1,4 @@
-package com.todomaster.backend.dto;
+package com.todomaster.backend.features.authentication;
 
 public class LoginRequest {
     public String email;
