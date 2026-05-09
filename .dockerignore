@@ -1,0 +1,46 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# Build artifacts
+target/
+build/
+dist/
+*.jar
+*.war
+
+# Dependencies
+node_modules/
+.mvn/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Documentation
+*.md
+docs/
+
+# Test
+coverage/
+.nyc_output/
+
+# Misc
+*.swp
+*.swo
+*~
