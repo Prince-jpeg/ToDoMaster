@@ -1,0 +1,36 @@
+services:
+  # Backend Service
+  - type: web
+    name: todomaster-backend
+    env: docker
+    dockerfilePath: ./Dockerfile.backend
+    region: singapore
+    plan: free
+    branch: main
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        value: jdbc:postgresql://aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres
+      - key: DATABASE_USERNAME
+        value: postgres.gczgqvnyfgfjfhfnnrud
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: JAVA_OPTS
+        value: -Xmx512m -Xms256m
+
+  # Frontend Service
+  - type: web
+    name: todomaster-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    region: singapore
+    plan: free
+    branch: main
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: todomaster-backend
+          property: host

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: todomaster-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=${DATABASE_URL:-jdbc:postgresql://aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres}
+      - SPRING_DATASOURCE_USERNAME=${DATABASE_USERNAME:-postgres.gczgqvnyfgfjfhfnnrud}
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD}
+      - JAVA_OPTS=-Xmx512m -Xms256m
+    networks:
+      - todomaster-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: todomaster-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - todomaster-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  todomaster-network:
+    driver: bridge
