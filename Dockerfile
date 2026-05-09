@@ -6,7 +6,7 @@ WORKDIR /app/backend
 
 # Copy backend source
 COPY pom.xml .
-COPY src ./src
+COPY . .
 
 # Build backend
 RUN mvn clean package -DskipTests
