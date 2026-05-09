@@ -1,4 +1,4 @@
-package com.todomaster.backend.entity;
+package com.todomaster.backend.features.user;
 
 import jakarta.persistence.*;
 
